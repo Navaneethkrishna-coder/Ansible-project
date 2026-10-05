@@ -1,0 +1,11 @@
+---
+# tasks/main.yml
+- name: Print a connection test message
+  ansible.builtin.debug:
+    msg: "Connection successful! Ansible is communicating with this host."
+
+- name: Create a simple test file on the server
+  ansible.builtin.copy:
+    content: "Ansible was here! This role successfully applied to this system.\n"
+    dest: /tmp/ansible_test.txt
+    mode: '0644'

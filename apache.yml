@@ -1,0 +1,7 @@
+---
+# apache.yml
+- name: Setup Web Server using Roles
+  hosts: webserver
+  become: yes
+  roles:
+    - my_custom_role_apache

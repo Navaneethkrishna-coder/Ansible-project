@@ -1,0 +1,7 @@
+---
+# site.yml
+- name: Setup Web Server using Role
+  hosts: webservers
+  become: yes
+  roles:
+    - my_custom_roles

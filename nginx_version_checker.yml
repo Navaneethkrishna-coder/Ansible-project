@@ -1,0 +1,17 @@
+---
+- name: Check Nginx version on Ubuntu
+  hosts: all
+  tasks:
+    - name: Gather package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Display Nginx version
+      ansible.builtin.debug:
+        msg: "Nginx version is {{ ansible_facts.packages['nginx'][0].version }}"
+      when: "'nginx' in ansible_facts.packages"
+
+    - name: Notify if Nginx is not installed
+      ansible.builtin.debug:
+        msg: "Nginx is not installed on this host."
+      when: "'nginx' not in ansible_facts.packages"
